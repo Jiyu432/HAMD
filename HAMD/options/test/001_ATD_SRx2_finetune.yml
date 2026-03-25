@@ -1,0 +1,91 @@
+name: 001_ATD_SRx2_finetune
+model_type: HAMDModel
+scale: 2
+num_gpu: 2 # set num_gpu: 0 for cpu mode
+manual_seed: 0
+
+datasets:
+  test_1: 
+    name: Set5
+    type: PairedImageDataset
+    dataroot_gt: /tmp/pycharm_project_ATD2/datasets/testUcM
+    dataroot_lq: /tmp/pycharm_project_ATD2/datasets/testUcM128
+    io_backend:
+      type: disk
+
+#  test_2:
+#    name: Set14
+#    type: PairedImageDataset
+#    dataroot_gt: datasets/TestDataSR/HR/Set14/x2
+#    dataroot_lq: datasets/TestDataSR/LR/LRBI/Set14/x2
+#    io_backend:
+#      type: disk
+#
+#  test_3:
+#    name: BSD100
+#    type: PairedImageDataset
+#    dataroot_gt: datasets/TestDataSR/HR/B100/x2
+#    dataroot_lq: datasets/TestDataSR/LR/LRBI/B100/x2
+#    io_backend:
+#      type: disk
+#
+#
+#  test_4:
+#    name: Urban100
+#    type: PairedImageDataset
+#    dataroot_gt: datasets/TestDataSR/HR/Urban100/x2
+#    dataroot_lq: datasets/TestDataSR/LR/LRBI/Urban100/x2
+#    io_backend:
+#      type: disk
+#
+#
+#  test_5:
+#    name: Manga109
+#    type: PairedImageDataset
+#    dataroot_gt: datasets/TestDataSR/HR/Manga109/x2
+#    dataroot_lq: datasets/TestDataSR/LR/LRBI/Manga109/x2
+#    io_backend:
+#      type: disk
+
+
+# network structures
+network_g:
+                                  type: TSSA_Net
+                                  upscale: 2
+                                  in_chans: 3
+                                  img_size: 64
+                                  window_size: 16
+                                  compress_ratio: 24
+                                  squeeze_factor: 24
+                                  conv_scale: 0.01
+                                  overlap_ratio: 0.5
+                                  img_range: 1.
+                                  depths: [6, 6, 6, 6, 6, 6]
+                                  embed_dim: 144
+                                  num_heads: [6, 6, 6, 6, 6, 6]
+                                  mlp_ratio: 2
+                                  upsampler: 'pixelshuffle'
+                                  resi_connection: '1conv'
+
+
+  
+# path
+path:
+  pretrain_network_g: /tmp/pycharm_project_ATD2/experiments/train_TSSA_EAAI2025_SRx2_DIV2K_archived_20250802_141653/models/net_g_latest.pth
+  strict_load_g: yes
+  param_key_g: params_ema
+
+# validation settings
+val:
+  save_img: true
+  suffix: ~  # add suffix to saved images, if None, use exp name
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 2
+      test_y_channel: yes
+    ssim:
+      type: calculate_ssim
+      crop_border: 2
+      test_y_channel: yes
