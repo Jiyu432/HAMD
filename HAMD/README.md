@@ -1,6 +1,6 @@
 # HAMD-RSISR: Hybrid Attention and Multi-Dictionary for Remote Sensing Super-Resolution
 
-This job opportunity arises from the paper "HAMD-RSISR: Hybrid Attention and Multi-Dictionary for Remote Sensing Super-Resolution",which has been published on IEEE JSTARS [[Paper](https://ieeexplore.ieee.org/document/11130383)].
+This job opportunity arises from the paper "HAMD-RSISR: Hybrid Attention and Multi-Dictionary for Remote Sensing Super-Resolution",which has been published on IEEE JSTARS  [[Paper](https://ieeexplore.ieee.org/document/11130383)].
 The improvement is primarily based on "Transcending the Limit of Local Window Advanced Super-Resolution Transformer" from CVPR2024. [[Paper](https://openaccess.thecvf.com/content/CVPR2024/html/Zhang_Transcending_the_Limit_of_Local_Window_Advanced_Super-Resolution_Transformer_with_CVPR_2024_paper.html)] [[arXiv](https://arxiv.org/abs/2401.08209)]
 Given my limited coding proficiency, I am submitting this as a record. It should be noted that this code cannot be used for professional learning or work
 
