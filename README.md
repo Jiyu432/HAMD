@@ -13,7 +13,10 @@ Given my limited coding proficiency, I am submitting this as a record. It should
 - Python 3.9
 - PyTorch 2.0.1
 
-
+## Pretrained Models
+We provide the pre-trained model for HAMD-RSISR. You can download it from the following link:
+- **Baidu Drive **: [link](https://pan.baidu.com/s/1TZAVdHHA_RMvBvLyht3ZHw?pwd=1544) 
+Download the `.pth` file and place it in your designated model directory...
 
 ## Citation
 
